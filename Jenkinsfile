@@ -1,6 +1,6 @@
 pipeline {
 
-   agent {label 'agenA'}
+   agent {label 'agentA'}
 
     tools {
         maven 'maven_3.9.4'
