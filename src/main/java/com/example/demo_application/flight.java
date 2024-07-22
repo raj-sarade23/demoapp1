@@ -8,7 +8,7 @@ public class flight {
     @GetMapping("/flight")
 
     public String getData() {
-        return "Please book flight in 20% discount.grab it DEV branch. testing-jenkins..";
+        return "Please book flight in 20% discount.grab it DEV branch.testing job1 testing-jenkins..";
     }
 
 }
