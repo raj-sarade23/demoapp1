@@ -1,28 +1,26 @@
 pipeline {
-    agent any
-    parameters {
-        booleanParam(name: "TEST_BOOLEAN", defaultValue: true, description: "Sample boolean parameter")
-        string(name: "TEST_STRING", defaultValue: "ssbostan", trim: true, description: "Sample string parameter")
-        text(name: "TEST_TEXT", defaultValue: "Jenkins Pipeline Tutorial", description: "Sample multi-line text parameter")
-        password(name: "TEST_PASSWORD", defaultValue: "SECRET", description: "Sample password parameter")
-        choice(name: "TEST_CHOICE", choices: ["production", "staging", "development"], description: "Sample multi-choice parameter")
+
+   agent any
+
+    tools {
+        maven 'maven_3.9.4'
     }
+
     stages {
-        stage("Build") {
+        stage('Code Compilation') {
             steps {
-                echo "Build stage."
-                echo "Hello $params.TEST_STRING"
+                echo 'code compilation is starting'
+                sh 'mvn clean compile'
+				echo 'code compilation is completed'
             }
         }
-        stage("Test") {
+        stage('Code Package') {
             steps {
-                echo "Test stage."
-            }
-        }
-        stage("Release") {
-            steps {
-                echo "Release stage."
+                echo 'code packing is starting'
+                sh 'mvn clean package'
+				echo 'code packing is completed'
             }
         }
     }
 }
+
